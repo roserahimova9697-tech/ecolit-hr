@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ECOLIT HR Portal</title>
+<meta name="description" content="Ecolit Ceiling Solutions — HR Portal: kadrlar bilan ishlashning zamonaviy tizimi">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--g:#2fb878;--g2:#1f9d63;--gl:#e7f6ee;--gl2:#d3efe0;--tx:#1d2733;--mu:#6b7785;--bd:#e8edf1;--bg:#f5f7f8;--card:#fff;--r:16px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;color:var(--tx);background:var(--bg);font-size:14px}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.app{display:flex;min-height:100vh}
+/* sidebar */
+.side{width:236px;background:#fff;border-right:1px solid var(--bd);padding:14px 12px;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow:auto;flex:none}
+.logo{display:flex;justify-content:center;padding:10px 0 22px}
+.nav a{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:12px;color:#33404d;font-weight:500;margin-bottom:3px}
+.nav a:hover{background:var(--gl)}
+.nav a.on{background:var(--g);color:#fff;box-shadow:0 4px 12px rgba(47,184,120,.3)}
+.nav .sub a{padding:8px 14px 8px 24px;font-size:13px;margin-left:8px;background:#f7f9fa}
+.nav .sub a.on{background:var(--gl2);color:var(--g2);box-shadow:none}
+.nav hr{border:0;border-top:1px solid var(--bd);margin:10px 0}
+.chev{margin-left:auto;width:16px!important;height:16px!important}
+.promo{margin-top:auto;border-radius:14px;overflow:hidden;background:var(--gl);padding:18px 16px 80px;position:relative}
+.promo p{font-size:13px;margin-top:10px;font-style:italic;color:#33404d}
+.promo .bld{position:absolute;inset:auto 0 0 0;height:70px;background:url(img/sidebar.jpg) bottom/cover;opacity:.85;mask-image:linear-gradient(transparent,#000 40%)}
+/* main */
+.main{flex:1;min-width:0}
+.top{display:flex;align-items:center;gap:18px;padding:16px 28px;background:#fff;border-bottom:1px solid var(--bd);position:sticky;top:0;z-index:5}
+.burger{display:none}
+.search{flex:1;max-width:420px;display:flex;align-items:center;gap:10px;background:#f1f4f6;border:1px solid var(--bd);border-radius:22px;padding:9px 16px}
+.search input{border:0;background:none;outline:0;font:inherit;flex:1}
+.bell{position:relative;margin-left:auto;color:#5a6672}
+.bell b{position:absolute;top:-6px;right:-6px;background:#ef4444;color:#fff;font-size:10px;border-radius:9px;min-width:17px;height:17px;display:grid;place-items:center}
+.user{display:flex;align-items:center;gap:10px}
+.user img{width:42px;height:42px;border-radius:50%;object-fit:cover}
+.user b{display:block;font-size:14px}.user small{color:var(--mu)}
+.page{padding:22px 28px 40px}
+.hero{position:relative;border-radius:var(--r);overflow:hidden;min-height:190px;background:#eef3f2;display:flex;align-items:center}
+.hero .ph{position:absolute;inset:0 0 0 38%;background:url(img/hero.jpg) center/cover}
+.hero .ph:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#f4f7f7 0%,rgba(244,247,247,.5) 25%,transparent 55%)}
+.hero .l{position:relative;padding:26px 34px}
+.hero .l i{display:block;font-size:20px;margin-top:10px;font-weight:500;color:#2a3540}
+.hero .card{position:absolute;right:22px;top:50%;transform:translateY(-50%);background:rgba(47,184,120,.92);color:#fff;border-radius:14px;padding:18px 22px;max-width:250px}
+.hero .card h2{font-size:24px;margin-bottom:6px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:18px 0}
+.box{background:var(--card);border-radius:var(--r);border:1px solid var(--bd);box-shadow:0 2px 10px rgba(20,40,60,.04)}
+.stat{display:flex;align-items:center;gap:16px;padding:18px 20px}
+.ic{width:52px;height:52px;border-radius:12px;background:var(--gl);color:var(--g2);display:grid;place-items:center;flex:none}
+.ic svg.i{width:26px;height:26px}
+.stat b{font-size:26px;display:block}
+.stat span{color:var(--mu);font-size:13px}
+.up{white-space:nowrap;color:var(--g2);font-size:12px;margin-left:6px;font-weight:600}
+.grid3{display:grid;grid-template-columns:1fr 1.1fr 1.2fr;gap:16px}
+.grid3b{display:grid;grid-template-columns:1.1fr 1.2fr 0.9fr;gap:16px;margin-top:16px}
+.panel{padding:18px 20px}
+.ph2{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.ph2 h3{font-size:16px}
+.ph2 .ic{width:30px;height:30px;border-radius:8px}.ph2 .ic svg.i{width:18px;height:18px}
+.ph2 a{margin-left:auto;color:var(--g2);font-size:13px;font-weight:600}
+.btn{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;background:var(--gl);color:var(--g2);font-weight:600;padding:9px 18px;border-radius:20px;font-size:13px}
+.btn:hover{background:var(--gl2)}
+.btn.p{background:var(--g);color:#fff;padding:12px 26px;font-size:14px}.btn.p:hover{background:var(--g2)}
+.donut{display:flex;align-items:center;gap:26px;flex-wrap:wrap}.grid3>*,.grid3b>*{min-width:0}
+.legend div{display:flex;align-items:center;gap:10px;margin:12px 0}
+.legend i{width:9px;height:9px;border-radius:50%}
+.legend b{margin-left:auto;padding-left:16px}
+.vac{display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1px solid var(--bd)}
+.vac:last-child{border:0}
+.vac .ic{width:42px;height:42px}
+.vac div b{display:block;font-size:13px}.vac div small{color:var(--mu)}
+.vac .btn{margin-left:auto}
+.steps{position:relative}
+.st{display:flex;gap:14px;margin-bottom:16px;position:relative}
+.st .n{width:26px;height:26px;border-radius:50%;border:2px solid var(--g);color:var(--g2);display:grid;place-items:center;font-weight:600;font-size:12px;flex:none;background:#fff;z-index:1}
+.st.on .n{background:var(--g);color:#fff}
+.st.off .n{border-color:#ccd3d9;color:#8a96a2;background:#eef1f3}
+.st:not(:last-child):after{content:"";position:absolute;left:12px;top:28px;bottom:-16px;border-left:2px solid var(--gl2)}
+.st b{display:block;font-size:13px}.st small{color:var(--mu);font-size:12px}
+.new{display:flex;gap:10px}
+.cv{flex:none;width:120px;height:140px;border-radius:16px;background:var(--gl);display:grid;place-items:center;position:relative}
+.cv .sh{width:70px;height:92px;background:#fff;border-radius:8px;box-shadow:0 6px 16px rgba(0,0,0,.08);padding:10px;transform:rotate(6deg)}
+.cv .sh b{color:#5b7fd6;font-size:15px}
+.cv .sh i{display:block;height:5px;background:#dfe6f2;border-radius:3px;margin-top:7px}
+.cv .ok{position:absolute;right:12px;bottom:18px;width:30px;height:30px;border-radius:50%;background:var(--g);color:#fff;display:grid;place-items:center}
+.comp{display:flex;gap:16px}
+.comp img{width:140px;height:130px;object-fit:cover;border-radius:12px;flex:none}
+.comp p{font-size:13px;line-height:1.55;color:#3a4652}
+.nw{display:flex;align-items:center;gap:14px;padding:8px 0;border-bottom:1px solid var(--bd)}
+.nw:last-child{border:0}
+.nw img{width:78px;height:38px;object-fit:cover;border-radius:6px}
+.nw span{flex:1;font-size:13px}.nw small{color:var(--mu);font-size:12px}
+.prof{text-align:center}
+.prof .row{display:flex;align-items:center;gap:14px;text-align:left}
+.prof img{width:90px;height:90px;border-radius:50%;object-fit:cover}
+.prof small{display:flex;gap:6px;align-items:center;color:var(--mu);margin-top:6px;font-size:12px}
+.prof small svg.i{width:14px;height:14px}
+.prof .btn{width:100%;justify-content:center;margin-top:16px}
+/* inner pages */
+h1.t{font-size:22px;margin-bottom:4px}.sub-t{color:var(--mu);margin-bottom:18px}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--bd)}
+th{font-size:12px;color:var(--mu);font-weight:600;text-transform:uppercase;background:#fafbfc}
+.tag{padding:3px 10px;border-radius:10px;font-size:12px;background:var(--gl);color:var(--g2);font-weight:500}
+.tag.b{background:#eaf0ff;color:#4a6fd6}.tag.o{background:#fff3e3;color:#c47a12}
+.tools{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+.inp,select,textarea{border:1px solid var(--bd);border-radius:10px;padding:10px 12px;font:inherit;background:#fff;outline:0;width:100%}
+.inp:focus,select:focus,textarea:focus{border-color:var(--g)}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form label{display:block;font-weight:500;font-size:13px;margin-bottom:6px}
+.form .f{grid-column:1/-1}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.q{margin-bottom:18px}.q b{display:block;margin-bottom:8px}
+.q label{display:flex;gap:8px;align-items:center;padding:8px 12px;border:1px solid var(--bd);border-radius:10px;margin-bottom:6px;cursor:pointer}
+.q label:hover{background:var(--gl)}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);opacity:0;pointer-events:none;background:#1d2733;color:#fff;padding:12px 22px;border-radius:12px;transition:.3s;z-index:50}
+.toast.s{transform:translateX(-50%) translateY(0);opacity:1}
+.empty{color:var(--mu);padding:20px;text-align:center}
+.qnav{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.qnav button{width:34px;height:34px;border-radius:8px;border:1px solid var(--bd);font-size:12px;font-weight:600;color:var(--mu)}
+.qnav button.ans{background:var(--gl);color:var(--g2);border-color:var(--gl2)}
+.qnav button.cur{outline:2px solid var(--g);color:var(--tx)}
+.qt b{display:block;font-size:16px;line-height:1.45}.qt small{display:block;color:var(--mu);margin-top:4px;line-height:1.45}
+.qimg{display:block;max-width:min(100%,600px);max-height:400px;margin:18px 0;border-radius:8px}
+.seq{font-size:24px;font-weight:700;margin:20px 0;font-family:Georgia,serif}
+.opts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0 6px;max-width:620px}
+.opt{border:2px solid var(--bd);border-radius:12px;padding:12px;display:flex;flex-direction:column;align-items:center;gap:4px;background:#fff;transition:.15s}
+.opt b{font-size:18px}.opt span{font-size:15px;color:var(--mu)}
+.opt:hover{border-color:var(--g)}.opt.sel{border-color:var(--g);background:var(--gl)}.opt.sel span{color:var(--g2)}
+.qctl{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:18px;padding-top:16px;border-top:1px solid var(--bd)}
+.thanks{text-align:center;padding:60px 24px;max-width:640px;margin:30px auto}
+.thanks .tick{width:76px;height:76px;border-radius:50%;background:var(--g);color:#fff;font-size:40px;display:grid;place-items:center;margin:0 auto 22px}
+.thanks h1{font-size:24px;margin-bottom:12px}.thanks p{color:var(--mu);margin-bottom:24px;line-height:1.6}
+button:disabled{cursor:wait}
+@media(max-width:820px){.opts{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:1200px){.grid3,.grid3b{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}}
+@media(max-width:820px){
+ .side{position:fixed;left:-260px;z-index:20;transition:.25s;box-shadow:0 0 30px rgba(0,0,0,.15)}
+ .side.open{left:0}.burger{display:block}
+ .grid3,.grid3b,.form{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr;gap:10px}.stat{padding:14px;gap:10px}.stat .ic{width:40px;height:40px}.comp{flex-direction:column}.comp img{width:100%!important}
+ .user div,.search{display:none}.hero .card{display:none}.hero .ph{inset:0 0 0 45%}
+ .page{padding:16px}.top{padding:12px 16px}
+ .tblw{overflow-x:auto}
+}
+</style>
+</head>
+<body>
+<svg style="display:none">
+ <symbol id="logo" viewBox="0 0 200 74"><path d="M30 6H6v58h24" stroke="#5e656b" stroke-width="3.5" fill="none"/><path d="M38 14H14v42h24" stroke="#5e656b" stroke-width="3" fill="none"/><text x="34" y="52" font-family="Inter,Arial" font-size="46" font-weight="500" letter-spacing="-1.5"><tspan fill="#2fb878">eco</tspan><tspan fill="#5e656b">lit</tspan></text><text x="98" y="68" font-family="Inter,Arial" font-size="8" fill="#5e656b" letter-spacing="1.2">CEILING SOLUTIONS</text></symbol>
+ <symbol id="home" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></symbol>
+ <symbol id="users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6M16 4a4 4 0 0 1 0 8M22 21c0-3-2-5-4-5.5"/></symbol>
+ <symbol id="bag" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></symbol>
+ <symbol id="uadd" viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6M19 8v6M16 11h6"/></symbol>
+ <symbol id="check" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 12l3 3 5-6"/></symbol>
+ <symbol id="build" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M10 21v-3h4v3"/></symbol>
+ <symbol id="msg" viewBox="0 0 24 24"><path d="M4 4h16v12H8l-4 4z"/><path d="M8 9h8M8 12h5"/></symbol>
+ <symbol id="user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></symbol>
+ <symbol id="gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></symbol>
+ <symbol id="out" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></symbol>
+ <symbol id="search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/></symbol>
+ <symbol id="bellI" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></symbol>
+ <symbol id="down" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+ <symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+ <symbol id="doc" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h7"/><path d="M14 3l5 5h-5zM8 12h7M8 16h4"/><circle cx="18" cy="18" r="3.5"/><path d="M16.5 18l1 1 2-2"/></symbol>
+ <symbol id="cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M7 14h2M11 14h2M15 14h2M7 17h2M11 17h2"/></symbol>
+ <symbol id="calc" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h1M12 11h1M15 11h1M8 14h1M12 14h1M15 14h1M8 17h1M12 17h1M15 17h1"/></symbol>
+ <symbol id="pc" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></symbol>
+ <symbol id="info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></symbol>
+ <symbol id="mega" viewBox="0 0 24 24"><path d="M3 10v4h3l7 4V6L6 10zM16 9a4 4 0 0 1 0 6M19 7a7 7 0 0 1 0 10"/></symbol>
+ <symbol id="mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+ <symbol id="phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+ <symbol id="menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+</svg>
+
+<div class="app">
+<aside class="side" id="side">
+ <div class="logo"><svg width="180" height="66"><use href="#logo"/></svg></div>
+ <nav class="nav" id="nav">
+  <a href="#/" data-r="/"><svg class="i"><use href="#home"/></svg>Bosh sahifa</a>
+  <a href="#/hodimlar" data-r="/hodimlar"><svg class="i"><use href="#users"/></svg>Hodimlar bazasi</a>
+  <a href="#/vakansiyalar" data-r="/vakansiyalar"><svg class="i"><use href="#bag"/></svg>Bo'sh ish o'rinlari</a>
+  <a href="#/ariza" data-r="/yangi"><svg class="i"><use href="#uadd"/></svg>Yangi xodim uchun<svg class="i chev"><use href="#down"/></svg></a>
+  <div class="sub">
+   <a href="#/ariza" data-r="/ariza"><svg class="i" style="width:16px;height:16px"><use href="#check"/></svg>Onlayn ariza berish</a>
+   <a href="#/test" data-r="/test"><svg class="i" style="width:16px;height:16px"><use href="#check"/></svg>Test topshirish</a>
+  </div>
+  <a href="#/kompaniya" data-r="/kompaniya"><svg class="i"><use href="#build"/></svg>Kompaniya haqida</a>
+  <a href="#/yangiliklar" data-r="/yangiliklar"><svg class="i"><use href="#msg"/></svg>HR yangiliklari</a>
+  <a href="#/profil" data-r="/profil"><svg class="i"><use href="#user"/></svg>Mening profilim</a>
+  <a href="#/sozlamalar" data-r="/sozlamalar"><svg class="i"><use href="#gear"/></svg>Sozlamalar</a>
+  <hr>
+  <a href="#/" onclick="toast('Tizimdan chiqildi');return true"><svg class="i"><use href="#out"/></svg>Chiqish</a>
+ </nav>
+ <div class="promo" style="margin-top:20px">
+  <svg width="120" height="44"><use href="#logo"/></svg>
+  <p>Together for<br>greater success!</p>
+  <div class="bld"></div>
+ </div>
+</aside>
+
+<div class="main">
+ <header class="top">
+  <button class="burger" onclick="document.getElementById('side').classList.toggle('open')"><svg class="i"><use href="#menu"/></svg></button>
+  <label class="search"><svg class="i"><use href="#search"/></svg><input id="q" placeholder="Qidiruv..."></label>
+  <button class="bell" onclick="location.hash='#/yangiliklar'"><svg class="i" style="width:24px;height:24px"><use href="#bellI"/></svg><b>3</b></button>
+  <a class="user" href="#/profil"><img src="img/avatar.jpg" alt=""><div><b>Roza Raximova</b><small>HR Manager</small></div><svg class="i" style="width:16px;height:16px"><use href="#down"/></svg></a>
+ </header>
+ <main class="page" id="page"></main>
+</div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+// ====== SOZLAMA: Google Apps Script "Web app URL" manzilini shu yerga qo'ying ======
+const API_URL='BU_YERGA_APPS_SCRIPT_URL';
+// ================================================================================
+const I=(id,s='')=>`<svg class="i" ${s}><use href="#${id}"/></svg>`;
+const store={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('s');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('s'),2600)}
+
+const vacancies=[
+ {t:'Accounting Specialist',d:"Buxgalteriya bo'limi",ic:'calc',type:"To'liq stavka",sal:'8 000 000 – 12 000 000'},
+ {t:'HR Specialist',d:"HR bo'limi",ic:'users',type:"To'liq stavka",sal:'7 000 000 – 10 000 000'},
+ {t:'IT Support Specialist',d:"IT bo'limi",ic:'pc',type:"To'liq stavka",sal:'7 000 000 – 11 000 000'},
+ {t:'Sotuv menejeri',d:"Savdo bo'limi",ic:'bag',type:"To'liq stavka",sal:'6 000 000 + bonus'},
+ {t:'Montajchi usta',d:"Ishlab chiqarish",ic:'build',type:'Smenali',sal:'6 500 000 – 9 000 000'},
+ {t:'Omborchi',d:'Logistika',ic:'build',type:"To'liq stavka",sal:'5 000 000 – 6 500 000'},
+ {t:'Dizayner (interyer)',d:"Loyihalash bo'limi",ic:'pc',type:'Gibrid',sal:'8 000 000 – 13 000 000'},
+ {t:'Haydovchi-ekspeditor',d:'Logistika',ic:'bag',type:"To'liq stavka",sal:'5 500 000 – 7 000 000'},
+ {t:'Sifat nazoratchisi',d:"Ishlab chiqarish",ic:'check',type:'Smenali',sal:'6 000 000 – 8 000 000'},
+ {t:'Marketolog',d:'Marketing',ic:'mega',type:'Gibrid',sal:'7 000 000 – 10 000 000'},
+ {t:'Operator CNC',d:"Ishlab chiqarish",ic:'gear',type:'Smenali',sal:'7 000 000 – 9 500 000'},
+ {t:'Yurist',d:"Yuridik bo'lim",ic:'doc',type:"To'liq stavka",sal:'9 000 000 – 14 000 000'}];
+const names=['Aliyev Jasur','Karimova Dilnoza','Tursunov Bekzod','Raximova Roza','Yusupova Malika','Xolmatov Sardor','Abdullayeva Nigora','Ergashev Otabek','Sobirova Madina','Qodirov Aziz','Nazarova Gulnoza','Mirzayev Javlon','Ismoilova Shahnoza','Rahimov Doniyor','Saidova Feruza','Umarov Islom'];
+const roles=[['Bosh direktor','Boshqaruv','Boshqaruv'],['Bosh buxgalter','Buxgalteriya','Mutaxassis'],['Montajchi','Ishlab chiqarish','Ishchi'],['HR Manager','HR','Boshqaruv'],['Menejer','Savdo','Mutaxassis'],['Operator CNC','Ishlab chiqarish','Ishchi'],['Buxgalter','Buxgalteriya','Mutaxassis'],['Omborchi','Logistika','Ishchi'],['Dizayner','Loyihalash','Mutaxassis'],['Usta','Ishlab chiqarish','Ishchi'],['Marketolog','Marketing','Mutaxassis'],['Haydovchi','Logistika','Ishchi'],['Yurist','Yuridik','Mutaxassis'],['Bo\'lim boshlig\'i','Ishlab chiqarish','Boshqaruv'],['Kadrlar mutaxassisi','HR','Mutaxassis'],['Sifat nazoratchisi','Ishlab chiqarish','Ishchi']];
+const emps=names.map((n,i)=>({n,r:roles[i][0],d:roles[i][1],c:roles[i][2],ph:'+998 9'+(i%9)+' '+(100+i*37)+' '+(10+i*3)+' '+(20+i*4),dt:(2016+i%9)+'-'+String(1+i%12).padStart(2,'0')+'-'+String(3+i).padStart(2,'0')}));
+const news=[
+ {t:'Yangi xodimlar uchun moslashuv dasturi',d:'02.11.2026',img:'news1',x:"Noyabr oyidan boshlab har bir yangi xodimga 30 kunlik moslashuv dasturi va murabbiy biriktiriladi."},
+ {t:'Professional rivojlanish treningi',d:'28.10.2026',img:'news2',x:"Bo'lim rahbarlari uchun liderlik va jamoani boshqarish bo'yicha 2 kunlik trening o'tkazildi."},
+ {t:'Yilning eng yaxshi xodimi',d:'20.10.2026',img:'news3',x:"2026-yil yakunlari bo'yicha eng yaxshi xodim tanlovi boshlandi. Nomzodlarni bo'lim rahbarlari taqdim etadi."}];
+
+const head=(ic,t,link)=>`<div class="ph2"><span class="ic">${I(ic)}</span><h3>${t}</h3>${link?`<a href="${link}">Barchasi ${I('arrow','style="width:14px;height:14px;vertical-align:-2px"')}</a>`:''}</div>`;
+const vacRow=(v,i)=>`<div class="vac"><span class="ic">${I(v.ic)}</span><div><b>${v.t}</b><small>${v.d}</small></div><a class="btn" href="#/ariza?v=${i}">Ariza berish</a></div>`;
+const newsRow=n=>`<div class="nw"><img src="img/${n.img}.jpg" alt=""><span>${n.t}</span><small>${n.d}</small></div>`;
+
+function donut(){const p=[15,45,40],c=['#2fb878','#7fd3a8','#c4ebd6'];let o=0,r=52,C=2*Math.PI*r;
+ return `<svg width="150" height="150" viewBox="0 0 150 150" style="transform:rotate(-90deg)">${p.map((v,i)=>{const s=`<circle cx="75" cy="75" r="${r}" fill="none" stroke="${c[i]}" stroke-width="22" stroke-dasharray="${C*v/100} ${C}" stroke-dashoffset="${-C*o/100}"/>`;o+=v;return s}).join('')}</svg>`}
+
+const pages={
+'/':()=>{const apps=store.get('apps',[]).length;return `
+ <section class="hero box"><div class="ph"></div><div class="l"><svg width="250" height="92"><use href="#logo"/></svg><i>Bir jamoa – katta imkoniyatlar!</i></div>
+ <div class="card"><h2>HR Portal</h2>Kompaniyamizda kadrlar bilan ishlashning zamonaviy tizimi</div></section>
+ <div class="stats">
+  ${[['users',327,'Jami hodimlar','+5%','#/hodimlar'],['bag',12,"Bo'sh ish o'rinlari",'+1','#/vakansiyalar'],['doc',86+store.get('tests',[]).length,'Topshirilgan testlar','+12%','#/test'],['cal',24+apps,'Yangi arizalar','+8%','#/ariza']]
+   .map(s=>`<a class="box stat" href="${s[4]}"><span class="ic">${I(s[0])}</span><div><b>${s[1]}</b><span>${s[2]}</span><span class="up">↑ ${s[3]}</span></div></a>`).join('')}
+ </div>
+ <div class="grid3">
+  <div class="box panel">${head('users',"Hodimlar haqida ma'lumot")}
+   <div class="donut"><div style="position:relative">${donut()}<div style="position:absolute;inset:0;display:grid;place-items:center;text-align:center"><div><b style="font-size:24px">327</b><br><small style="color:var(--mu)">Jami</small></div></div></div>
+   <div class="legend" style="flex:1"><div><i style="background:#2fb878"></i>Boshqaruv<b>15%</b></div><div><i style="background:#7fd3a8"></i>Mutaxassislar<b>45%</b></div><div><i style="background:#c4ebd6"></i>Ishchilar<b>40%</b></div></div></div>
+   <div style="text-align:right;margin-top:10px"><a class="btn" href="#/hodimlar">Batafsil hisobot ${I('arrow','style="width:14px;height:14px"')}</a></div></div>
+  <div class="box panel">${head('bag',"Bo'sh ish o'rinlari",'#/vakansiyalar')}${vacancies.slice(0,3).map(vacRow).join('')}</div>
+  <div class="box panel">${head('uadd','Yangi xodim uchun')}
+   <div class="new"><div class="steps" style="flex:1">
+    <div class="st"><span class="n">1</span><div><b>Onlayn ariza berish</b><small>Shaxsiy ma'lumotlaringizni kiriting</small></div></div>
+    <div class="st on"><span class="n">2</span><div><b>Test topshirish</b><small>Bilim va ko'nikmalaringizni tekshiring</small></div></div>
+    <div class="st off"><span class="n">3</span><div><b>Intervyu</b><small>HR mutaxassisi bilan suhbat</small></div></div>
+   </div><div class="cv"><div class="sh"><b>CV</b><i></i><i style="width:70%"></i><i></i><i style="width:50%"></i></div><span class="ok">✓</span></div></div>
+   <a class="btn p" href="#/ariza">Boshlash ${I('arrow','style="width:16px;height:16px"')}</a></div>
+ </div>
+ <div class="grid3b">
+  <div class="box panel">${head('info','Kompaniya haqida')}<div class="comp"><img src="img/company.jpg" alt=""><div><p>Ecolit Ceiling Solutions – zamonaviy shift yechimlari ishlab chiqaruvchi kompaniya. Biz ishonchlilik, sifat va innovatsiyalarni qadrlaymiz.</p><a class="btn" href="#/kompaniya" style="margin-top:14px">Batafsil ma'lumot ${I('arrow','style="width:14px;height:14px"')}</a></div></div></div>
+  <div class="box panel">${head('mega','HR yangiliklari','#/yangiliklar')}${news.map(newsRow).join('')}</div>
+  <div class="box panel prof">${head('user','Mening profilim')}<div class="row"><img src="img/avatar.jpg" alt=""><div><b style="font-size:16px">Roza Raximova</b><div style="color:var(--mu);font-size:13px">HR Manager</div><small>${I('mail')}roza@ecolit.uz</small><small>${I('phone')}+998 90 123 45 67</small></div></div><a class="btn" href="#/profil">Profilni ko'rish ${I('arrow','style="width:14px;height:14px"')}</a></div>
+ </div>`},
+
+'/hodimlar':()=>`<h1 class="t">Hodimlar bazasi</h1><p class="sub-t">Jami 327 nafar xodim · quyida namunaviy ro'yxat</p>
+ <div class="tools"><input class="inp" id="es" placeholder="Ism yoki lavozim bo'yicha qidirish" style="max-width:320px"><select id="ed" style="max-width:220px"><option value="">Barcha bo'limlar</option>${[...new Set(emps.map(e=>e.d))].map(d=>`<option>${d}</option>`).join('')}</select></div>
+ <div class="box tblw"><table><thead><tr><th>F.I.Sh.</th><th>Lavozim</th><th>Bo'lim</th><th>Toifa</th><th>Telefon</th><th>Ishga kirgan</th></tr></thead><tbody id="eb"></tbody></table></div>`,
+
+'/vakansiyalar':()=>`<h1 class="t">Bo'sh ish o'rinlari</h1><p class="sub-t">${vacancies.length} ta ochiq vakansiya</p>
+ <div class="cards">${vacancies.map((v,i)=>`<div class="box panel"><div class="vac" style="border:0;padding:0"><span class="ic">${I(v.ic)}</span><div><b>${v.t}</b><small>${v.d}</small></div></div>
+ <div style="margin:14px 0;display:flex;gap:8px;flex-wrap:wrap"><span class="tag">${v.type}</span><span class="tag b">${v.sal} so'm</span></div><a class="btn p" href="#/ariza?v=${i}" style="width:100%;justify-content:center">Ariza berish</a></div>`).join('')}</div>`,
+
+'/ariza':(qs)=>{const v=qs.get('v');if(cand()&&!store.get('done_'+cand().id,false))return startedNote();return `<h1 class="t">Onlayn ariza berish</h1><p class="sub-t">1-qadam: shaxsiy ma'lumotlaringizni kiriting. Keyin mantiqiy test boshlanadi.</p>
+ <form class="box panel form" id="af">
+  <div><label>Familiya, ism, otasining ismi *</label><input class="inp" name="name" required></div>
+  <div><label>Tug'ilgan sana *</label><input class="inp" type="date" name="birth" required></div>
+  <div><label>Telefon *</label><input class="inp" name="phone" placeholder="+998 __ ___ __ __" required pattern="[+0-9 ()-]{9,}"></div>
+  <div><label>Email</label><input class="inp" type="email" name="email"></div>
+  <div><label>Yashash manzili *</label><input class="inp" name="address" required placeholder="Shahar, tuman"></div>
+  <div><label>Ma'lumoti *</label><select name="education" required><option value="">Tanlang</option><option>O'rta</option><option>O'rta maxsus</option><option>Oliy (bakalavr)</option><option>Oliy (magistr)</option></select></div>
+  <div><label>Vakansiya *</label><select name="vacancy">${vacancies.map((x,i)=>`<option value="${x.t} — ${x.d}" ${v==i?'selected':''}>${x.t} — ${x.d}</option>`).join('')}</select></div>
+  <div><label>Ish tajribasi *</label><select name="experience"><option>Tajribasiz</option><option>1 yilgacha</option><option>1–3 yil</option><option>3–5 yil</option><option>5 yildan ortiq</option></select></div>
+  <div><label>Oxirgi ish joyi va lavozimi</label><input class="inp" name="lastJob"></div>
+  <div><label>Kutilayotgan maosh (so'm)</label><input class="inp" name="salary"></div>
+  <div class="f"><label>O'zingiz haqingizda qisqacha</label><textarea name="about" rows="3"></textarea></div>
+  <div class="f"><label>Rezyume (CV) fayli — PDF yoki Word, 5 MB gacha</label><input class="inp" type="file" name="cv" accept=".pdf,.doc,.docx"></div>
+  <div class="f"><label style="display:flex;gap:8px;align-items:center;font-weight:400"><input type="checkbox" required> Shaxsiy ma'lumotlarimni ishga qabul qilish maqsadida qayta ishlashga roziman</label></div>
+  <div class="f"><button class="btn p" id="asb">Davom etish va testni boshlash ${I('arrow','style="width:16px;height:16px"')}</button></div>
+ </form>`},
+
+'/test':()=>{const c=cand();if(!c)return `<h1 class="t">Test topshirish</h1><div class="box panel"><p style="margin-bottom:14px">Testni boshlash uchun avval anketani to'ldiring.</p><a class="btn p" href="#/ariza">Anketani to'ldirish ${I('arrow','style="width:16px;height:16px"')}</a></div>`;
+ if(store.get('done_'+c.id,false))return thanks();
+ return `<h1 class="t">Mantiqiy test</h1><p class="sub-t">${esc(c.name)}, ${QUIZ.length} ta savol. Har bir savolga bitta javob tanlang. Natija HR bo'limiga yuboriladi.</p>
+ <div class="box panel"><div class="qnav" id="qnav"></div><div id="qbox"></div>
+ <div class="qctl"><button class="btn" id="qprev">← Oldingi</button><span id="qcount" style="color:var(--mu)"></span><button class="btn p" id="qnext">Keyingi →</button></div></div>`},
+
+'/rahmat':()=>thanks(),
+
+'/kompaniya':()=>`<h1 class="t">Kompaniya haqida</h1><p class="sub-t">Ecolit Ceiling Solutions</p>
+ <div class="box panel comp" style="align-items:flex-start"><img src="img/company.jpg" style="width:260px;height:220px" alt=""><div>
+ <p style="font-size:15px">Ecolit Ceiling Solutions – zamonaviy shift yechimlari ishlab chiqaruvchi kompaniya. Biz ishonchlilik, sifat va innovatsiyalarni qadrlaymiz.</p>
+ <div class="stats" style="grid-template-columns:repeat(3,1fr)"><div class="box stat"><div><b>327</b><span>xodim</span></div></div><div class="box stat"><div><b>3</b><span>yo'nalish: boshqaruv, mutaxassislar, ishlab chiqarish</span></div></div><div class="box stat"><div><b>12</b><span>ochiq vakansiya</span></div></div></div>
+ <p><b>Qadriyatlarimiz:</b> ishonchlilik · sifat · innovatsiya · jamoaviylik</p><p style="margin-top:8px"><i>"Bir jamoa – katta imkoniyatlar!"</i></p></div></div>`,
+
+'/yangiliklar':()=>`<h1 class="t">HR yangiliklari</h1><p class="sub-t">Kompaniyadagi so'nggi yangiliklar</p>
+ <div class="cards">${news.map(n=>`<div class="box" style="overflow:hidden"><img src="img/${n.img}.jpg" style="width:100%;height:150px;object-fit:cover" alt=""><div class="panel"><small style="color:var(--mu)">${n.d}</small><h3 style="margin:6px 0 8px;font-size:16px">${n.t}</h3><p style="color:#3a4652;line-height:1.5">${n.x}</p></div></div>`).join('')}</div>`,
+
+'/profil':()=>{const p=store.get('prof',{e:'roza@ecolit.uz',ph:'+998 90 123 45 67'});return `<h1 class="t">Mening profilim</h1><p class="sub-t">Shaxsiy ma'lumotlar</p>
+ <div class="box panel prof" style="max-width:640px"><div class="row"><img src="img/avatar.jpg" style="width:120px;height:120px" alt=""><div><b style="font-size:20px">Roza Raximova</b><div style="color:var(--mu)">HR Manager · HR bo'limi</div><small>${I('mail')}${p.e}</small><small>${I('phone')}${p.ph}</small></div></div>
+ <form class="form" id="pf" style="margin-top:20px;text-align:left"><div><label>Email</label><input class="inp" name="e" value="${p.e}"></div><div><label>Telefon</label><input class="inp" name="ph" value="${p.ph}"></div><div class="f"><button class="btn p">Saqlash</button></div></form></div>`},
+
+'/sozlamalar':()=>`<h1 class="t">Sozlamalar</h1><p class="sub-t">Portal sozlamalari</p>
+ <div class="box panel" style="max-width:560px">
+ <div class="q"><b>Interfeys tili</b><select><option>O'zbekcha</option><option>Русский</option><option>English</option></select></div>
+ <div class="q"><b>Bildirishnomalar</b><label><input type="checkbox" checked> Yangi arizalar haqida xabar berish</label><label><input type="checkbox" checked> HR yangiliklari</label></div>
+ <button class="btn p" onclick="toast('Sozlamalar saqlandi')">Saqlash</button>
+ <button class="btn" style="margin-left:8px" onclick="if(confirm('Barcha saqlangan arizalar o\\'chirilsinmi?')){store.set('apps',[]);store.set('tests',[]);toast('Tozalandi')}">Ma'lumotlarni tozalash</button></div>`
+};
+const QT={fig:"Quyidagi shakllar bir qonuniyat asosida joylashtirilgan. Bu ketma-ketlikning bo'sh katagi quyidagilardan qaysi biriga mos?|Приведенные фигуры стоят в определенной закономерности. Найдите недостающую фигуру.",odd:"Ortiqcha shaklni ko'rsating.|Укажите лишнюю фигуру.",num:"Keyingi sonni toping.|Найдите следующее число."};
+const QUIZ=[];
+QUIZ.push({t:"Berilgan shakllarning o'xshashliklari bor. Shu o'xshashlik quyidagilarning qaysi birida mavjud?|Даны одинаковые фигуры. Подбери к ним одну, которая подходит больше всего.",img:1});
+for(let i=2;i<=17;i++)QUIZ.push({t:QT.fig,img:i});
+for(let i=18;i<=20;i++)QUIZ.push({t:QT.odd,img:i});
+QUIZ.push({t:QT.fig,img:21},{t:QT.fig,img:22});
+QUIZ.push({t:QT.num,seq:'1, 1, 2, 3, 5, 8, 13, 21, ...',o:['32','34','36','38']},
+ {t:QT.num,seq:'1, 8, 16, 25, ...',o:['30','35','40','41']},
+ {t:"Bir joyga yig'ilgan 5 ta do'st bir-birlari bilan qo'l berib ko'rishishmoqda. Shu qo'l berib ko'rishishlar soni nechta?|В одном месте встретились 5 друзей, поздоровались друг с другом рукопожатием. Сколько рукопожатий было?",o:['5','10','20','25']},
+ {t:"Bo'sh bo'lgan hovuzga birinchi kuni ma'lum miqdorda suv solindi. Keyingi kunlar esa, bir kun avvalgi kunda qancha suv bo'lgan bo'lsa, shuncha suv solindi. Agar hovuz 6 kunda to'ldirilgan bo'lsa, hovuzning yarmi necha kunda to'lgan?|В первый день бассейн заполнили определенным количеством воды. В последующие дни налили в бассейн столько же воды, сколько было в предыдущий день. Если бассейн был наполнен за 6 дней, сколько дней потребовалось, чтобы заполнить бассейн наполовину?",o:['2','3','4','5']},
+ {t:"Sinfda o'quvchilar bir safda turishgan edi. Shu safdagi Bahodir chapdan sanalganda o'n yettinchi, o'ngdan sanalganda yigirma ikkinchi bo'lib turibdi. Sinfda o'quvchilar nechta?|Ученики стояли по порядку в колонне. Тимур стоял семнадцатым, если считать слева, и двадцать вторым, если считать справа. Сколько учеников было в классе?",o:['40','39','38','37']},
+ {t:"Shifokor Jamoliddinga 30 ta dori berdi. Kuniga 3 tadan dori iste'mol qilishni buyurdi. Faqat dorilarning har birini bir soat tanaffus qilib ichishni buyurdi. Jamoliddin bir kunda necha soat dori ichishi kerak?|Врач дал Коле 30 таблеток и назначил пить по 3 таблетки в день, с перерывом 1 час между приёмами. Сколько часов в день Коля принимает таблетки?",o:['0','1','2','3']},
+ {t:"Baland binoning 3-qavatigacha bo'lgan masofa, shu binoning 15-qavatigacha bo'lgan masofadan necha marta kam?|Во сколько раз расстояние до 3 этажа меньше расстояния до 15 этажа?",o:['3','5','7','12']},
+ {t:"Londonning mashhur bong uruvchi soati har bong urishiga 3 soniyadan vaqt kerak bo'ladi. Agar soat 10 bo'lganida, soat 10 marta bong ursa, necha soniya vaqt kerak bo'ladi?|Знаменитым лондонским часам, чтобы пробить 1 удар, требуется 3 секунды. Сколько секунд потребуется, чтобы пробить 10 раз в 10 часов?",o:['3','10','27','30']},
+ {t:"Bir o'quvchi 6 ta daftar sotib olganida, o'zida 100 so'm puli qoldi. Agar u 8 ta daftar sotib olganida edi, u 300 so'm qarzdor bo'lib qolardi. Shunga ko'ra bitta daftar necha pul?|Ученик купил 6 тетрадей, и у него осталось 100 сумов. Если бы он купил 8 тетрадей, то остался бы должен 300 сумов. Сколько стоит тетрадь?",o:['100','150','200','400']});
+
+const cand=()=>{try{return JSON.parse(sessionStorage.getItem('cand'))}catch(e){return null}};
+const thanks=()=>`<div class="box panel thanks"><div class="tick">✓</div><h1>Korxonamizga qiziqish bildirganingiz uchun tashakkur!</h1><p>Ma'lumotlaringiz HR bo'limiga yuborildi. Mutaxassislarimiz siz bilan tez orada bog'lanishadi.</p><a class="btn" href="#/">Bosh sahifaga qaytish</a></div>`;
+const startedNote=()=>`<h1 class="t">Onlayn ariza berish</h1><div class="box panel"><p style="margin-bottom:14px">Anketangiz qabul qilingan. Endi testni yakunlang.</p><a class="btn p" href="#/test">Testga o'tish ${I('arrow','style="width:16px;height:16px"')}</a></div>`;
+async function send(d){
+ if(!API_URL||API_URL.includes('BU_YERGA')){console.warn('API_URL sozlanmagan — ma\'lumot yuborilmadi',d);return true}
+ for(let t=0;t<3;t++){try{await fetch(API_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(d)});return true}catch(e){await new Promise(r=>setTimeout(r,1500))}}
+ return false}
+const fileB64=f=>new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(String(r.result).split(',')[1]);r.onerror=rej;r.readAsDataURL(f)});
+
+function render(){
+ const h=location.hash.slice(1)||'/';const [path,q]=h.split('?');const qs=new URLSearchParams(q||'');
+ const f=pages[path]||pages['/'];document.getElementById('page').innerHTML=f(qs);
+ document.querySelectorAll('#nav a[data-r]').forEach(a=>a.classList.toggle('on',a.dataset.r===path||(path==='/'&&a.dataset.r==='/')));
+ document.getElementById('side').classList.remove('open');window.scrollTo(0,0);bind(path);
+}
+function bind(path){
+ if(path==='/hodimlar'){const es=document.getElementById('es'),ed=document.getElementById('ed');const q0=document.getElementById('q').value;es.value=q0;
+  const draw=()=>{const s=es.value.toLowerCase(),d=ed.value;const r=emps.filter(e=>(!d||e.d===d)&&(e.n+e.r).toLowerCase().includes(s));
+   document.getElementById('eb').innerHTML=r.length?r.map(e=>`<tr><td><b>${e.n}</b></td><td>${e.r}</td><td>${e.d}</td><td><span class="tag ${e.c==='Boshqaruv'?'':e.c==='Mutaxassis'?'b':'o'}">${e.c}</span></td><td>${e.ph}</td><td>${e.dt}</td></tr>`).join(''):'<tr><td colspan=6 class="empty">Hech narsa topilmadi</td></tr>'};
+  es.oninput=draw;ed.onchange=draw;draw()}
+ if(path==='/ariza'&&document.getElementById('af')){document.getElementById('af').onsubmit=async e=>{e.preventDefault();const f=e.target,fd=new FormData(f),btn=document.getElementById('asb');
+  const c={};['name','birth','phone','email','address','education','vacancy','experience','lastJob','salary','about'].forEach(k=>c[k]=(fd.get(k)||'').toString().trim());
+  const file=fd.get('cv');let cv=null;
+  if(file&&file.size){if(file.size>5*1024*1024){toast('CV fayli 5 MB dan katta');return}cv={name:file.name,type:file.type,data:await fileB64(file)}}
+  btn.disabled=true;btn.style.opacity=.6;
+  const id='E'+Date.now().toString(36).toUpperCase();
+  const ok=await send({type:'ariza',id,candidate:c,cv});
+  btn.disabled=false;btn.style.opacity=1;
+  if(!ok){toast("Internet bilan muammo. Qayta urinib ko'ring.");return}
+  c.id=id;sessionStorage.setItem('cand',JSON.stringify(c));sessionStorage.setItem('tstart',Date.now());sessionStorage.removeItem('tans');
+  const a=store.get('apps',[]);a.unshift({d:Date.now()});store.set('apps',a);
+  location.hash='#/test'}}
+ if(path==='/test'&&document.getElementById('qbox')){const c=cand();let cur=0;let A=[];try{A=JSON.parse(sessionStorage.getItem('tans'))||[]}catch(e){}
+  if(!sessionStorage.getItem('tstart'))sessionStorage.setItem('tstart',Date.now());
+  const save=()=>sessionStorage.setItem('tans',JSON.stringify(A));
+  const draw=()=>{const q=QUIZ[cur],[uz,ru]=q.t.split('|');
+   document.getElementById('qbox').innerHTML=`<div class="qt"><b>${cur+1}. ${uz}</b><small>${ru}</small></div>
+    ${q.img?`<img class="qimg" src="img/test/q${String(q.img).padStart(2,'0')}.png" alt="${cur+1}-savol">`:''}
+    ${q.seq?`<div class="seq">${q.seq}</div>`:''}
+    <div class="opts">${'ABCD'.split('').map((L,i)=>`<button class="opt ${A[cur]===L?'sel':''}" data-l="${L}"><b>${L}</b>${q.o?`<span>${q.o[i]}</span>`:''}</button>`).join('')}</div>`;
+   document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{A[cur]=b.dataset.l;save();draw();if(cur<QUIZ.length-1)setTimeout(()=>{cur++;draw()},250)});
+   document.getElementById('qnav').innerHTML=QUIZ.map((_,i)=>`<button class="${i===cur?'cur':''} ${A[i]?'ans':''}" data-i="${i}">${i+1}</button>`).join('');
+   document.querySelectorAll('#qnav button').forEach(b=>b.onclick=()=>{cur=+b.dataset.i;draw()});
+   const n=A.filter(Boolean).length;document.getElementById('qcount').textContent=`Javob berildi: ${n} / ${QUIZ.length}`;
+   document.getElementById('qprev').style.visibility=cur?'visible':'hidden';
+   const nx=document.getElementById('qnext');nx.textContent=cur===QUIZ.length-1?'Testni yakunlash ✓':'Keyingi →'};
+  document.getElementById('qprev').onclick=()=>{if(cur>0){cur--;draw()}};
+  document.getElementById('qnext').onclick=async e=>{if(cur<QUIZ.length-1){cur++;draw();return}
+   const left=QUIZ.length-A.filter(Boolean).length;
+   if(left&&!confirm(`${left} ta savolga javob berilmagan. Testni yakunlaysizmi?`))return;
+   e.target.disabled=true;e.target.textContent='Yuborilmoqda...';
+   const answers=QUIZ.map((_,i)=>A[i]||'');const seconds=Math.round((Date.now()-(+sessionStorage.getItem('tstart')))/1000);
+   const ok=await send({type:'test',id:c.id,candidate:c,answers,seconds});
+   if(!ok){e.target.disabled=false;e.target.textContent='Qayta yuborish';toast("Internet bilan muammo. Qayta urinib ko'ring.");return}
+   store.set('done_'+c.id,true);const t=store.get('tests',[]);t.push(1);store.set('tests',t);
+   sessionStorage.removeItem('tans');sessionStorage.removeItem('cand');sessionStorage.removeItem('tstart');location.hash='#/rahmat'};
+  draw()}
+
+ if(path==='/profil'){document.getElementById('pf').onsubmit=e=>{e.preventDefault();const fd=new FormData(e.target);store.set('prof',{e:fd.get('e'),ph:fd.get('ph')});render();toast('Profil saqlandi')}}
+}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+document.getElementById('q').addEventListener('keydown',e=>{if(e.key==='Enter'){location.hash='#/hodimlar';render()}});
+window.addEventListener('hashchange',render);render();
+</script>
+</body>
+</html>
