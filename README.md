@@ -12,3 +12,4 @@ Eslatma: arizalar va test natijalari foydalanuvchi brauzerida (localStorage) saq
 3. Nomzodga faqat "Korxonamizga qiziqish bildirganingiz uchun tashakkur!" chiqadi.
 
 `index.html` ichidagi `API_URL` ga Apps Script Web app manzilini qo'ying. To'g'ri javoblar kaliti bu repozitoriyda YO'Q — u faqat Apps Script'da turadi.
+.
